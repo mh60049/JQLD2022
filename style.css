@@ -1,0 +1,167 @@
+.divTop {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
+  width: 100%;
+  background: white;
+  height: ;
+  display: flex;
+  flex-direction: row;
+}
+
+.divTopLeft {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
+  width: 75%;
+  background: white;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.divHeading {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 95%;
+  height: 60px;
+  font-size: 40px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.divHeader {  /* Logs/index.html: Box at the top of the page conataining Start/Stop button, CurrentOwner TextBox */
+  margin-bottom: 3px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.clsStart {
+  width: 10.5%;
+  display: flex;
+  margin-bottom: 1px;
+}
+
+.imgStart {  /* Logs/index.html: Icon for the Start/Stop/Finished in the top-left of the page. */
+  /*width: 50px;*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.boxWinner {
+  width: 85%;
+  border: 1px solid blue;
+  margin-left: 30px;
+  background-color: aqua;
+}
+
+.divWinner {  /* Logs/index.html: Box at the top of the page containing CurrentOwner TextBox and Label. */
+  flex-wrap: wrap;
+  background:rgb(255, 136, 0);
+  border: 3px solid green;
+  border-radius: 10px;
+  width: 600px;
+  /*height: 40px;*/
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  margin-left: 3px;
+  color: white;
+}
+
+.divTopRight {
+  align-content: flex-end;
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+}
+
+.imgLogo {
+  width: 85%;
+}
+
+.divDraw {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
+  width: 100%;
+  background: white;
+  height: fit-content;
+  text-align: center;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.divWinnersAll {  /* Logs/index.html: Box at left of the page containing Winners icon and drawn. */
+  flex-wrap: wrap;
+  background-color:silver;
+  border: 1px solid blue;
+  width: 8%;
+  height: fit-content;
+  text-align: top;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
+  flex-direction: column;
+
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: top;
+  -webkit-align-items: top;
+  -webkit-box-align: top;
+  align-items: top;
+}
+
+.divWinnersHeading {  /*Logs/index.html: Box in the left of the page containing the icon for winners. */
+  background-color: white;
+}
+
+.imgWinnersHeading {  /*Logs/index.html: Icon "Winners" located in the left of the page. */
+  width: 100px;
+}
+
+.divWinners {  /* Logs/index.html: Box at left of the page containing Winners drawn. */
+  flex-wrap: wrap;
+  border: 1px solid green;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:medium;
+  /*width: 130px;*/
+  height: fit-content;
+  text-align: left;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
+  flex-direction: column-reverse;
+
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: top;
+  -webkit-align-items: top;
+  -webkit-box-align: top;
+  align-items: top;
+}
+
+.clsUsers {  /*logs/index.html page: Box holding all users to be drawn.*/
+  width: 85%;
+  border: 1pt solid blue;
+  background-color: silver;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-left: 1px;
+}
+
+.userName1 {  /*logs/index.html: Buttons for each individual user. */
+  flex-wrap: wrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:small;
+  border: 1px solid gray;
+  width: fit-content;
+  height: 15px;
+  padding:5px;
+  background:lightblue;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5pt;
+}
