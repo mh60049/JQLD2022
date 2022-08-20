@@ -14,7 +14,7 @@ let lngWinner = 5;  //Maximum number of winners
 getData();
 
 async function getData() {
-  const response = await fetch('./users.json');
+  const response = await fetch('users.json');
   const data = await response.json();
 
   let theID = 0;
@@ -67,11 +67,11 @@ function startDraw() {
     if (lngWinner > 0) {
       if (blnStart === false) {
         blnStart = true;
-        document.getElementById("imgStart").src="./StopDraw.jpg";
+        document.getElementById("imgStart").src="StopDraw.jpg";
         myTimer = setInterval(changeStyle, 200);
       } else {  //When blnStart = true
         blnStart = false;
-        document.getElementById("imgStart").src="./StartDraw.jpg";
+        document.getElementById("imgStart").src="StartDraw.jpg";
         clearInterval(myTimer);
         arrWinner.push(myID.toString());
 
@@ -91,7 +91,7 @@ function startDraw() {
         div1.appendChild(btnWinner);
         window.speechSynthesis.speak(new SpeechSynthesisUtterance(strUserName));
         if (lngWinner === 0) {
-          document.getElementById("imgStart").src="./Finished.jpg";
+          document.getElementById("imgStart").src="Finished.jpg";
           blnFinished = true;
         }
       }
