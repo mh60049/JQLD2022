@@ -57,7 +57,7 @@ function changeStyle(){
   } else {
     blnFinished = true;
     let img1 = document.getElementById("imgStart");
-    img1.src ="./Finished.jpg";
+    img1.src ="Finished.jpg";
     clearInterval(myTimer);
   }
 }
