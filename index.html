@@ -18,20 +18,20 @@
         <div class="clsStart">
           <img class="imgStart" id="imgStart" onclick="startDraw()" src="StartDraw.jpg"/>
         </div>
-        <div class="divWinner">
+        <div class="divWinner" onclick="removeLastWinner()">
           <span id="txtWinner"></span>
         </div>
       </div>
     </div>
 
     <div class="divTopRight">
-       <img class="imgLogo" src="GSK.png">
+       <img class="imgLogo" src="GSK.png" onclick="showLocalWinners()">
     </div>
   </div>
 
   <div class="divDraw">
     <div class="divWinnersAll">
-      <div class="divWinnersHeading"><img class="imgWinnersHeading" src="Winner.jpg"></div>
+      <div class="divWinnersHeading"><img class="imgWinnersHeading" src="Winner.jpg" onclick="clearWinners()"></div>
       <div class="divWinners", id="divWinners"></div>
     </div>
     <div class="clsUsers" id="idUsers">
