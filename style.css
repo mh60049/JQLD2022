@@ -1,14 +1,16 @@
 .divTop {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
   width: 100%;
-  background: white;
+  background: rgba(255,255,255,0.5);
   height: 135px;
   display: flex;
   flex-direction: row;
+
+
 }
 
 .divTopLeft {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
   width: 75%;
-  background: white;
+  background: rgba(255,255,255,0.5);
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -24,6 +26,8 @@
   padding-bottom: 10px;
   display: flex;
   flex-direction: row;
+
+
 }
 
 .divHeader {  /* Logs/index.html: Box at the top of the page conataining Start/Stop button, CurrentOwner TextBox */
@@ -50,7 +54,7 @@
 
 .divWinner {  /* Logs/index.html: Box at the top of the page containing CurrentOwner TextBox and Label. */
   flex-wrap: wrap;
-  background:rgb(255, 136, 0);
+  background:rgb(255, 136, 0, 0.5);
   border: 3px solid green;
   border-radius: 10px;
   width: 70%;
@@ -82,11 +86,16 @@
   display: flex;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
+  /*
+  background-image: url('Background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  */
 }
 
 .divWinnersAll {  /* Logs/index.html: Box at left of the page containing Winners icon and drawn. */
   flex-wrap: wrap;
-  background-color:silver;
+  background-color:rgba(192,192,192);
   border: 1px solid blue;
   width: 8%;
   height: fit-content;
@@ -138,13 +147,18 @@
 .clsUsers {  /*logs/index.html page: Box holding all users to be drawn.*/
   width: 85%;
   border: 1pt solid blue;
-  background-color: silver;
+  background-color: rgba(192,192,192,0.8);
   display: -webkit-flex;
   display: flex;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
   justify-content: space-around;
   margin-left: 3px;
+  /*
+  background-image: url('Background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  */
 }
 
 .userName1 {  /*logs/index.html: Buttons for each individual user. */
