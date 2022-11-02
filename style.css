@@ -1,16 +1,80 @@
-.divTop {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
-  width: 100%;
-  background: rgba(255,255,255,0.5);
-  height: 135px;
-  display: flex;
-  flex-direction: row;
-
-
+body {
+  background-color: lightyellow;
+}
+.cls0Draw {
+  padding: 0px;
+  height: fit-content;
 }
 
-.divTopLeft {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
+.cls1Winners {  /* Logs/index.html: Box at left of the page containing Winners icon and drawn. */
+  float: left;
+  flex-wrap: wrap;
+  background-color:lightyellow;
+  width: 9%;
+  height: fit-content;
+  text-align: top;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
+  flex-direction: column;
+
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: top;
+  -webkit-align-items: top;
+  -webkit-box-align: top;
+  align-items: top;
+}
+
+.cls2MSoft {
+  margin-top: 20px;
+  padding: 5px;
+  background-color: yellow;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border-bottom-style: double;
+  text-align: center;
+}
+
+.cls1DrawWinners {  /* Logs/index.html: Box at left of the page containing Winners icon and drawn. */
+  float: left;
+  flex-wrap: wrap;
+  background-color:rgba(192,192,192);
+  width: 89%;
+  height: 100%;
+  text-align: center;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
+  flex-direction: column;
+
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: top;
+  -webkit-align-items: top;
+  -webkit-box-align: top;
+  align-items: top;
+}
+
+.cls2Ribbon {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
+  float: center;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  background: rgba(255,255,255,1);
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.cls3RibbonLeft {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
   width: 75%;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,1);
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -28,7 +92,7 @@
   flex-direction: row;
 }
 
-.divHeader {  /* Logs/index.html: Box at the top of the page conataining Start/Stop button, CurrentOwner TextBox */
+.cls4Ribbon {  /* Logs/index.html: Box at the top of the page conataining Start/Stop button, CurrentOwner TextBox */
   margin-bottom: 3px;
   display: -webkit-flex;
   display: flex;
@@ -36,54 +100,59 @@
   flex-flow: row wrap;
 }
 
-.clsStart {
-  width: 10.5%;
+.cls3Start {
+  width: 8%;
   display: flex;
   margin-bottom: 1px;
 }
 
-.imgStart {  /* Logs/index.html: Icon for the Start/Stop/Finished in the top-left of the page. */
+.clsImgStart {  /* Logs/index.html: Icon for the Start/Stop/Finished in the top-left of the page. */
   /*width: 50px;*/
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 75%;
+  width: 100%;
+  height: 85%;
 }
 
-.divWinner {  /* Logs/index.html: Box at the top of the page containing CurrentOwner TextBox and Label. */
+.cls3Picked {  /* Logs/index.html: Box at the top of the page containing CurrentOwner TextBox and Label. */
   flex-wrap: wrap;
-  background:rgb(255, 136, 0, 0.5);
+  padding-left: 3px;
+  /*background:rgb(255, 136, 0, 0.5);*/
+  background:white;
   border: 3px solid green;
   border-radius: 10px;
-  width: 85%;
-  height: 120px;
-  text-align: center;  /*was centre */
+  width: 70%;
+  height: 110px;
+  text-align: left;  /*was centre */
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
-  font-size: 7.5vh;
+  font-size: 3vw; 
+  text-size-adjust: auto;
   margin-left: 5px;
   color: red;
+  z-index: 0;
 }
 
-.divWinner:after {
-  display: inline-block;
-  width: 100%;
+.clsPicked {
+  display: block;
+  overflow: auto;
+  position: relative;
+  top: 0;
 }
 
-.divTopRight {
-  align-content: flex-end;
-  width: 22%;
-  display: flex;
-  flex-direction: row;
+.cls3RibbonLogo {
+  width: 50%;
+  height: 90%;
 }
 
-.imgLogo {
+.clsImg5040 {
+  padding-top: 10px;
   width: 85%;
 }
 
-.divDraw {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
+.cls2Participants {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
   width: 100%;
-  background: white;
   height: fit-content;
   text-align: center;
   display: flex;
@@ -96,28 +165,26 @@
   */
 }
 
-.divWinnersAll {  /* Logs/index.html: Box at left of the page containing Winners icon and drawn. */
-  flex-wrap: wrap;
-  background-color:rgba(192,192,192);
-  border: 1px solid blue;
-  width: 8%;
-  height: fit-content;
-  text-align: top;
-  -webkit-flex-flow: column wrap;
-  flex-flow: column wrap;
-  flex-direction: column;
-
-  display: -ms-flexbox;
+.cls3Participants {  /*logs/index.html page: Box holding all users to be drawn.*/
+  width: 100%;
+  border: 1pt solid blue;
+  background-color: rgba(192,192,192,0.8);
   display: -webkit-flex;
   display: flex;
-
-  -ms-flex-align: top;
-  -webkit-align-items: top;
-  -webkit-box-align: top;
-  align-items: top;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-left: 3px;
+  height: 100%;
+  /*
+  background-image: url('Background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  */
 }
 
-.divWinnersHeading {  /*Logs/index.html: Box in the left of the page containing the icon for winners. */
+
+.cls2WinnerHeader {  /*Logs/index.html: Box in the left of the page containing the icon for winners. */
   background-color: white;
 }
 
@@ -125,7 +192,7 @@
   width: 100px;
 }
 
-.divWinners {  /* Logs/index.html: Box at left of the page containing Winners drawn. */
+.cls2WinnerList {  /* Logs/index.html: Box at left of the page containing Winners drawn. */
   flex-wrap: wrap;
   border: 1px solid green;
   font-family: Arial, Helvetica, sans-serif;
@@ -147,22 +214,6 @@
   align-items: top;
 }
 
-.clsUsers {  /*logs/index.html page: Box holding all users to be drawn.*/
-  width: 85%;
-  border: 1pt solid blue;
-  background-color: rgba(192,192,192,0.8);
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  margin-left: 3px;
-  /*
-  background-image: url('Background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  */
-}
 
 .userName1 {  /*logs/index.html: Buttons for each individual user. */
   flex-wrap: wrap;

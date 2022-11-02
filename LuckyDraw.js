@@ -1,6 +1,7 @@
 //const fs = require('fs');
 
 let lngTotal = 0;  //Total number of users
+let lngRibbonPosition = 0;  //Position of ribbon at ordianl number of participant
 let myTimer;
 let myID0 = 0;
 let myID = 0;
@@ -22,7 +23,11 @@ async function getData() {
   let theID = 0;
   let userID = '';
   lngTotal = JSON.parse(JSON.stringify(data)).length
-  let theUsers = document.getElementById('idUsers');
+  lngRibbonPosition=Math.floor(lngTotal / 3);
+  console.log('half total = ' + lngRibbonPosition);
+  let theUsers = document.getElementById('idParticipants');
+
+  let theRibbon = document.getElementById('id2Ribbon');
  
   for (item of data) {
     theID++;
@@ -33,6 +38,11 @@ async function getData() {
     userName.textContent = `${item.UserName}`;
 
     theUsers.append(userName);
+
+    if (theID === lngRibbonPosition) {
+      theUsers.append(theRibbon);
+      console.log('The Ribbon');
+    }
   }
   
   //Load previously drawn winners from localStorage
@@ -58,7 +68,7 @@ async function getData() {
 
       btnWinner.style.borderColor = "lightgreen";
 
-      let div1 = document.getElementById("divWinners")
+      let div1 = document.getElementById("idWinnerList")
       div1.appendChild(btnWinner);
       
       lngWinner=lngTotalWinner-lngExistingWinner;
@@ -85,10 +95,10 @@ function changeStyle(){
     element.style.color = "white";
 
     myID0 = myID;
-    document.getElementById('txtWinner').textContent=element.textContent
+    document.getElementById('idPicked').textContent=element.textContent
   } else {
     blnFinished = true;
-    let img1 = document.getElementById("imgStart");
+    let img1 = document.getElementById("idImgStart");
     img1.src ="Finished.jpg";
     clearInterval(myTimer);
   }
@@ -100,7 +110,7 @@ function clearWinners() {
   blnClear=confirm('Would you like to clear winner list?');
   if (blnClear === true){
     window.localStorage.clear();
-    let div1 = document.getElementById("divWinners")
+    let div1 = document.getElementById("idWinnerList")
     while (div1.firstChild) {
       div1.removeChild(div1.firstChild);
     }
@@ -113,15 +123,15 @@ function startDraw() {
     if (lngWinner > 0) {
       if (blnStart === false) {
         blnStart = true;
-        document.getElementById("imgStart").src="StopDraw.jpg";
+        document.getElementById("idImgStart").src="StopDraw.jpg";
         myTimer = setInterval(changeStyle, 200);
       } else {  //When blnStart = true
         blnStart = false;
-        document.getElementById("imgStart").src="StartDraw.jpg";
+        document.getElementById("idImgStart").src="StartDraw.jpg";
         clearInterval(myTimer);
         arrWinner.push(myID.toString());
 
-        let strUserName = document.getElementById('txtWinner').textContent;
+        let strUserName = document.getElementById('idPicked').textContent;
         strWinner=lngWinner + '. ' + strUserName  //Text to be displayed on winner buttons
         arrWinners.push(strWinner);  //Add the winner to the arrange arrWinners
         window.localStorage.setItem(lngWinner.toString(), strUserName);
@@ -144,11 +154,11 @@ function startDraw() {
 
         lngWinner = lngWinner - 1;
 
-        let div1 = document.getElementById("divWinners")
+        let div1 = document.getElementById("idWinnerList")
         div1.appendChild(btnWinner);
         window.speechSynthesis.speak(new SpeechSynthesisUtterance('.' + strUserName));
         if (lngWinner === 0) {
-          document.getElementById("imgStart").src="Finished.jpg";
+          document.getElementById("idImgStart").src="Finished.jpg";
           blnFinished = true;
         }
       }
@@ -184,7 +194,7 @@ function removeLastWinner() {
     arrWinner.pop;
     arrWinners.pop;
 
-    let div1 = document.getElementById("divWinners")
+    let div1 = document.getElementById("idWinnerList")
     div1.removeChild(div1.lastChild);
 
     lngWinner = lngWinner+1;
