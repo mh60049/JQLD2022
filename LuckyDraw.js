@@ -6,7 +6,10 @@ let myTimer;
 let myID0 = 0;
 let myID = 0;
 let blnStart = false;
+let arrParticipants = [];
+let arrCandidates = [];
 let arrWinner = [];
+let arrWinnerName = [];
 let arrWinners = [];
 let blnFinished = false;
 let lngWinner = 30;  //Maximum number of winners
@@ -22,27 +25,15 @@ async function getData() {
 
   let theID = 0;
   let userID = '';
+
   lngTotal = JSON.parse(JSON.stringify(data)).length
-  lngRibbonPosition=Math.floor(lngTotal / 3);
-  console.log('half total = ' + lngRibbonPosition);
+    
   let theUsers = document.getElementById('idParticipants');
 
   let theRibbon = document.getElementById('id2Ribbon');
  
   for (item of data) {
-    theID++;
-    const userName = document.createElement('div');
-    userName.className='userName1';
-    userID = ('id' + toString(theID));
-    userName.id = theID;
-    userName.textContent = `${item.UserName}`;
-
-    theUsers.append(userName);
-
-    if (theID === lngRibbonPosition) {
-      theUsers.append(theRibbon);
-      console.log('The Ribbon');
-    }
+    arrParticipants.push(item.UserName);
   }
   
   //Load previously drawn winners from localStorage
@@ -57,16 +48,18 @@ async function getData() {
       let btnWinner = document.createElement("button");
       btnWinner.innerHTML=strWinner;
       btnWinner.style.textAlign = "left";
+      btnWinner.style.fontSize = "18px";
+      btnWinner.style.fontWeight = "bold";
 
       if (lng1 <= 15) {
-        btnWinner.style.backgroundColor = "green";
-        btnWinner.style.color = "white";
-      } else {
-        btnWinner.style.backgroundColor = "lightgreen";
+        btnWinner.style.backgroundColor = "rgb(255,182,0)";
         btnWinner.style.color = "black";
+      } else {
+        btnWinner.style.backgroundColor = "rgb(190,58,40)";
+        btnWinner.style.color = "white";
       }
 
-      btnWinner.style.borderColor = "lightgreen";
+      btnWinner.style.borderColor = "orange";
 
       let div1 = document.getElementById("idWinnerList")
       div1.appendChild(btnWinner);
@@ -80,17 +73,15 @@ async function getData() {
 function changeStyle(){
   if (arrWinner.length < lngTotal) {
     if (myID0 > 0) {
-      let element0=document.getElementById(myID0);
+      let element0=document.getElementById('idCandidate' + myID0);
       element0.style.backgroundColor = "lightblue";
       element0.style.color = "black";
     }
 
-    do {
-      myID = Math.floor(Math.random() * lngTotal) + 1;
-    } 
-    while (arrWinner.includes(myID.toString()) === true);
+    myID = Math.floor(Math.random() * 15) + 1;
 
-    let element = document.getElementById(myID);
+    let element = document.getElementById('idCandidate' + myID);
+    console.log(element);
     element.style.backgroundColor = "green";
     element.style.color = "white";
 
@@ -110,6 +101,7 @@ function clearWinners() {
   blnClear=confirm('Would you like to clear winner list?');
   if (blnClear === true){
     window.localStorage.clear();
+    arrWinnerName = [];
     let div1 = document.getElementById("idWinnerList")
     while (div1.firstChild) {
       div1.removeChild(div1.firstChild);
@@ -123,6 +115,7 @@ function startDraw() {
     if (lngWinner > 0) {
       if (blnStart === false) {
         blnStart = true;
+        addCandidates();
         document.getElementById("idImgStart").src="StopDraw.jpg";
         myTimer = setInterval(changeStyle, 200);
       } else {  //When blnStart = true
@@ -134,22 +127,25 @@ function startDraw() {
         let strUserName = document.getElementById('idPicked').textContent;
         strWinner=lngWinner + '. ' + strUserName  //Text to be displayed on winner buttons
         arrWinners.push(strWinner);  //Add the winner to the arrange arrWinners
+        arrWinnerName.push(strUserName);
         window.localStorage.setItem(lngWinner.toString(), strUserName);
 
         let btnWinner = document.createElement("button");
         btnWinner.innerHTML=strWinner;
         btnWinner.style.textAlign = "left";
+        btnWinner.style.fontSize = "18px";
+        btnWinner.style.fontWeight = "bold";
 
         if (lngWinner <= 15) {
-          btnWinner.style.backgroundColor = "green";
-          btnWinner.style.color = "white";
-         } else {
-          btnWinner.style.backgroundColor = "lightgreen";
+          btnWinner.style.backgroundColor = "rgb(255,182,0)";
           btnWinner.style.color = "black";
+         } else {
+          btnWinner.style.backgroundColor = "rgb(190,58,40)";
+          btnWinner.style.color = "white";
          }
 
         
-        btnWinner.style.borderColor = "lightgreen";
+        btnWinner.style.borderColor = "orange";
         btnWinner.id='btnWin' + lngWinner.toString();
 
         lngWinner = lngWinner - 1;
@@ -172,6 +168,35 @@ function startDraw() {
       showLocalWinners();
     }
   }
+}
+
+function addCandidates() {
+  let strName = '';
+  let lng1 = 0;
+  let lng2 = 0;
+  let bln1 = false;
+  let str1 = '';
+  let str2 = '';
+
+  arrCandidates = [];
+
+  do {
+    lng1 = Math.floor(Math.random() * lngTotal);  //Removed "+1"
+    str1 = arrParticipants.at(lng1)
+    bln1 = arrWinnerName.includes(str1) || arrCandidates.includes(str1)
+
+    
+    if (bln1 === false) {
+      arrCandidates.push(str1)
+
+      str2 = 'idCandidate' + (lng2 + 1).toString();
+      console.log(str2);
+      document.getElementById(str2).textContent = str1;
+
+      ++lng2;
+    }
+  } 
+  while (lng2 < 15);
 }
 
 function showLocalWinners() {
