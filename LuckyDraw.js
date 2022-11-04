@@ -12,7 +12,7 @@ let arrWinner = [];
 let arrWinnerName = [];
 let arrWinners = [];
 let blnFinished = false;
-let lngWinner = 30;  //Maximum number of winners
+let lngWinner = 5;  //Maximum number of winners
 let lngTotalWinner = lngWinner;
 let lngExistingWinner = 0;
 
@@ -110,6 +110,20 @@ function clearWinners() {
   }
 }
 
+function clearCandidates() {
+  let div1 = document.getElementById("idParticipants")
+  while (div1.firstChild) {
+    div1.removeChild(div1.firstChild);
+  }
+}
+
+function clearMarquee() {
+  let div1 = document.getElementById("idMarquee")
+  while (div1.firstChild) {
+    div1.removeChild(div1.firstChild);
+  }
+}
+
 function startDraw() {
   if (blnFinished === false) {
     if (lngWinner > 0) {
@@ -117,9 +131,17 @@ function startDraw() {
         blnStart = true;
         addCandidates();
         document.getElementById("idImgStart").src="StopDraw.jpg";
+
+        document.getElementById("idPicked").style.backgroundColor = "white";
+        document.getElementById("idPicked").style.color = "red";
+
         myTimer = setInterval(changeStyle, 200);
       } else {  //When blnStart = true
         blnStart = false;
+
+        document.getElementById("idPicked").style.backgroundColor = "red";
+        document.getElementById("idPicked").style.color = "white";
+
         document.getElementById("idImgStart").src="StartDraw.jpg";
         clearInterval(myTimer);
         arrWinner.push(myID.toString());
@@ -156,6 +178,19 @@ function startDraw() {
         if (lngWinner === 0) {
           document.getElementById("idImgStart").src="Finished.jpg";
           blnFinished = true;
+
+          clearCandidates();
+
+          let winner1 = document.getElementById("idParticipants");
+          winner1.innerText = "Congratulations to\n" + document.getElementById("idPicked").innerText + " !"
+          winner1.style.fontSize="120px";
+          winner1.style.fontFamily="Arial";
+          winner1.style.backgroundColor="green";
+          winner1.style.color="white";
+          winner1.style.textAlign = "center";
+          winner1.style.alignContent="center";
+
+          clearMarquee();
         }
       }
     } else {  
