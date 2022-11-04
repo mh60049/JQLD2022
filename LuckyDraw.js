@@ -75,7 +75,7 @@ function changeStyle(){
     if (myID0 > 0) {
       let element0=document.getElementById('idCandidate' + myID0);
       element0.style.backgroundColor = "lightblue";
-      element0.style.color = "black";
+      element0.style.color = "rgb(100,100,100)";
     }
 
     myID = Math.floor(Math.random() * 15) + 1;
@@ -152,7 +152,7 @@ function startDraw() {
 
         let div1 = document.getElementById("idWinnerList")
         div1.appendChild(btnWinner);
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance('.' + strUserName));
+        //window.speechSynthesis.speak(new SpeechSynthesisUtterance('.' + strUserName));
         if (lngWinner === 0) {
           document.getElementById("idImgStart").src="Finished.jpg";
           blnFinished = true;

@@ -12,6 +12,7 @@ body {
   background-color:white;
   width: 15%;
   height: fit-content;
+  padding-right: 5px;
   text-align: top;
   -webkit-flex-flow: column wrap;
   flex-flow: column wrap;
@@ -38,6 +39,25 @@ body {
   border-bottom-style: double;
   text-align: center;
   font-size: 22px;
+  border-radius: 5px;
+
+  animation: blinker1 5s linear infinite;
+}
+
+@keyframes blinker1 {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.clsImgStart {
+  animation: blinker2 3s linear infinite;
+}
+
+@keyframes blinker2 {
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .cls1DrawWinners {  /* Logs/index.html: Box at left of the page containing Winners icon and drawn. */
@@ -133,7 +153,7 @@ body {
   /*background:rgb(255, 136, 0, 0.5);*/
   background:white;
   border: 5px solid rgb(255,182,0);
-  border-radius: 10px;
+  border-radius: 15px;
   width: 75%;
   height: 180px;
   text-align: left;  /*was centre */
@@ -179,7 +199,7 @@ body {
 .cls3Participants {  /*logs/index.html page: Box holding all users to be drawn.*/
   width: 100%;
   padding: 20px;
-  border: 1pt solid blue;
+  border: 1pt solid lightblue;
   background-color: rgb(240,240,240);
   display: -webkit-flex;
   display: flex;
@@ -188,6 +208,8 @@ body {
   justify-content: space-around;
   margin-left: 10px;
   height: 100%;
+  box-shadow: 2px 2px 3px 1px rgb(100, 100, 100, 0.8);
+  border-radius: 5px;
   /*
   background-image: url('Background.jpg');
   background-repeat: no-repeat;
@@ -246,13 +268,14 @@ body {
 
 .clsCandidate {
   font-family: Arial, Helvetica, sans-serif;
-  font-size:30px;
+  font-size: 30px;
   background-color: lightblue;
-  color: black;
+  color: rgb(100,100,100);
   padding: 10px;
   margin: 10px;
   border-radius: 15px;
   border-color: lightgray;
+  box-shadow: 3px 3px 6px 1px rgb(50, 50, 50, 0.8);
 }
 
 .cls2Marquee {
