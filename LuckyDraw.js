@@ -12,7 +12,7 @@ let arrWinner = [];
 let arrWinnerName = [];
 let arrWinners = [];
 let blnFinished = false;
-let lngWinner = 5;  //Maximum number of winners
+let lngWinner = 30;  //Maximum number of winners
 let lngTotalWinner = lngWinner;
 let lngExistingWinner = 0;
 
