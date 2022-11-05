@@ -132,7 +132,7 @@ body {
 
 .cls3Start {
   height: 180px;
-  margin-left: 10px;
+  margin-left: 50px;
 }
 
 .clsImgStart {  /* Logs/index.html: Icon for the Start/Stop/Finished in the top-left of the page. */
@@ -173,15 +173,6 @@ body {
   top: 0;
 }
 
-.cls2Notes {
-  font-size: 25px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: rgb(190,58,40);
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
 .cls2Participants {  /* Logs/index.html: Box in lower part of the page containing winners drawn and all users to be drawn */
   width: 100%;
   height: fit-content;
@@ -198,7 +189,7 @@ body {
 
 .cls3Participants {  /*logs/index.html page: Box holding all users to be drawn.*/
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   border: 1pt solid lightblue;
   background-color: rgb(240,240,240);
   display: -webkit-flex;
@@ -206,16 +197,15 @@ body {
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
   justify-content: space-around;
-  margin-left: 10px;
+  margin-left: 0px;
   height: 100%;
   box-shadow: 2px 2px 3px 1px rgb(100, 100, 100, 0.8);
   border-radius: 5px;
-  /*
-  background-image: url('Background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  */
+
+  /*position: reletive;*/
+  
 }
+
 
 .cls2WinnerHeader {  /*Logs/index.html: Box in the left of the page containing the icon for winners. */
   background-color: white;

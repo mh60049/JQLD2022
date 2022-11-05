@@ -1,5 +1,11 @@
 //const fs = require('fs');
 
+const max_fireworks = 5,
+max_sparks = 10;
+let canvas = document.getElementById('idCanvas');
+let context = canvas.getContext('2d');
+let fireworks = [];
+
 let lngTotal = 0;  //Total number of users
 let lngRibbonPosition = 0;  //Position of ribbon at ordianl number of participant
 let myTimer;
@@ -15,6 +21,7 @@ let blnFinished = false;
 let lngWinner = 30;  //Maximum number of winners
 let lngTotalWinner = lngWinner;
 let lngExistingWinner = 0;
+const lngMaxCandidates = 15;
 
 
 getData();
@@ -51,7 +58,7 @@ async function getData() {
       btnWinner.style.fontSize = "18px";
       btnWinner.style.fontWeight = "bold";
 
-      if (lng1 <= 15) {
+      if (lng1 <= lngMaxCandidates) {
         btnWinner.style.backgroundColor = "rgb(255,182,0)";
         btnWinner.style.color = "black";
       } else {
@@ -78,7 +85,7 @@ function changeStyle(){
       element0.style.color = "rgb(100,100,100)";
     }
 
-    myID = Math.floor(Math.random() * 15) + 1;
+    myID = Math.floor(Math.random() * lngMaxCandidates) + 1;
 
     let element = document.getElementById('idCandidate' + myID);
     console.log(element);
@@ -158,7 +165,7 @@ function startDraw() {
         btnWinner.style.fontSize = "18px";
         btnWinner.style.fontWeight = "bold";
 
-        if (lngWinner <= 15) {
+        if (lngWinner <= lngMaxCandidates) {
           btnWinner.style.backgroundColor = "rgb(255,182,0)";
           btnWinner.style.color = "black";
          } else {
@@ -183,14 +190,30 @@ function startDraw() {
 
           let winner1 = document.getElementById("idParticipants");
           winner1.innerText = "Congratulations to\n" + document.getElementById("idPicked").innerText + " !"
-          winner1.style.fontSize="120px";
+          winner1.style.fontSize="100px";
+          winner1.style.height = "400px";
           winner1.style.fontFamily="Arial";
-          winner1.style.backgroundColor="green";
-          winner1.style.color="white";
+          winner1.style.fontWeight = "bold";
+          winner1.style.backgroundColor="white";
+          winner1.style.color="rgb(243, 102, 51)";
           winner1.style.textAlign = "center";
           winner1.style.alignContent="center";
 
-          clearMarquee();
+          let div2 = document.getElementById('id2Participants');
+          div2.style.position = "relative";
+          div2.style.height = "200px";
+          div2.style.backgroundColor = "black";
+
+          winner1.style.position="absolute";
+          canvas.style.position = "absolute";
+          canvas.style.padding = "0px";
+          canvas.style.width = "100%";
+          canvas.style.height = "400px";
+          canvas.style.zIndex = "99";
+
+          startFireworks();
+
+          clearMarquee();  //Stop the moving text
         }
       }
     } else {  
@@ -231,7 +254,7 @@ function addCandidates() {
       ++lng2;
     }
   } 
-  while (lng2 < 15);
+  while (lng2 < lngMaxCandidates);
 }
 
 function showLocalWinners() {
@@ -269,3 +292,76 @@ window.addEventListener('beforeunload', (event) => {
   // Chrome requires returnValue to be set.
   event.returnValue = '';
 });
+
+
+function startFireworks() {
+  for (let i = 0; i < max_fireworks; i++) {
+      let firework = {
+          sparks: []
+      };
+
+      for (let n = 0; n < max_sparks; n++) {
+          let spark = {
+              vx: Math.random() * 5 + .5,
+              vy: Math.random() * 5 + .5,
+              weight: Math.random() * .3 + .03,
+              red: Math.floor(Math.random() * 2),
+              green: Math.floor(Math.random() * 2),
+              blue: Math.floor(Math.random() * 2)
+          };
+
+          if (Math.random() > .5) spark.vx = -spark.vx;
+          if (Math.random() > .5) spark.vy = -spark.vy;
+          firework.sparks.push(spark);
+      }
+      fireworks.push(firework);
+      resetFirework(firework);
+  }
+  window.requestAnimationFrame(explode);
+}
+
+function resetFirework(firework) {
+  firework.x = Math.floor(Math.random() * canvas.width);
+  firework.y = canvas.height;
+  firework.age = 0;
+  firework.phase = 'fly';
+}
+
+function explode() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  fireworks.forEach((firework,index) => {
+      if (firework.phase == 'explode') {
+          firework.sparks.forEach((spark) => {
+              for (let i = 0; i < 10; i++) {
+                  let trailAge = firework.age + i;
+                  let x = firework.x + spark.vx * trailAge;
+                  let y = firework.y + spark.vy * trailAge + spark.weight * trailAge * spark.weight * trailAge;
+                  let fade = i * 20 - firework.age * 2;
+                  let r = Math.floor(spark.red * fade);
+                  let g = Math.floor(spark.green * fade);
+                  let b = Math.floor(spark.blue * fade);
+                  context.beginPath();
+                  context.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',1)';
+                  context.rect(x, y, 4, 4);
+                  context.fill();
+              }
+          });
+
+          firework.age++;
+
+          if (firework.age > 100 && Math.random() < .05) {
+              resetFirework(firework);
+          }
+      } else {
+          firework.y = firework.y - 10;
+          for (let spark = 0; spark < lngMaxCandidates; spark++) {
+              context.beginPath();
+              context.fillStyle = 'rgba(' + index * 50 + ',' + spark * 17 + ',0,1)';
+              context.rect(firework.x + Math.random() * spark - spark / 2, firework.y + spark * 4, 4, 4);
+              context.fill();
+          }
+      if (Math.random() < .001 || firework.y < 200) firework.phase = 'explode';
+      }
+  });
+  window.requestAnimationFrame(explode);
+}
