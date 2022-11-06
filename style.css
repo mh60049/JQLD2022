@@ -143,6 +143,7 @@ body {
   margin-top: 5px;
   width: 98%;
   height: 100%;
+  cursor: pointer;
 }
 
 .cls3Picked {  /* Logs/index.html: Box at the top of the page containing CurrentOwner TextBox and Label. */
