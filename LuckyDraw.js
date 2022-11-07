@@ -23,7 +23,7 @@ let lngTotalWinner = lngWinner;
 let lngExistingWinner = 0;
 const lngMaxCandidates = 15;
 
-
+addCandidates();
 getData();
 
 async function getData() {
@@ -74,7 +74,6 @@ async function getData() {
       lngWinner=lngTotalWinner-lngExistingWinner;
     }
   }
-
 }
 
 function changeStyle(){
@@ -136,7 +135,7 @@ function startDraw() {
     if (lngWinner > 0) {
       if (blnStart === false) {
         blnStart = true;
-        addCandidates();
+        loadCandidates();
         document.getElementById("idImgStart").src="StopDraw.jpg";
 
         document.getElementById("idPicked").style.backgroundColor = "white";
@@ -165,14 +164,19 @@ function startDraw() {
         btnWinner.style.fontSize = "18px";
         btnWinner.style.fontWeight = "bold";
 
-        if (lngWinner <= lngMaxCandidates) {
-          btnWinner.style.backgroundColor = "rgb(255,182,0)";
+        if (lngWinner <= 5) {
+          btnWinner.style.backgroundColor = "rgb(255,216,91)";
           btnWinner.style.color = "black";
-         } else {
-          btnWinner.style.backgroundColor = "rgb(190,58,40)";
+        } else if (lngWinner <= 10) {
+          btnWinner.style.backgroundColor = "rgb(246,134,198)";
+          btnWinner.style.color = "black";
+        } else if (lngWinner <= 20) {
+          btnWinner.style.backgroundColor = "rgb(248,163,133)";
+          btnWinner.style.color = "black";
+        } else if (lngWinner <= 30) {
+          btnWinner.style.backgroundColor = "rgb(139,43,8)";
           btnWinner.style.color = "white";
-         }
-
+        }
         
         btnWinner.style.borderColor = "orange";
         btnWinner.id='btnWin' + lngWinner.toString();
@@ -229,6 +233,17 @@ function startDraw() {
 }
 
 function addCandidates() {
+  let lngB1 = 0;
+  for (lngB1=1; lngB1 <= 15; lngB1++) {
+    let btn1 = document.createElement('button');
+    btn1.className = "clsCandidate";
+    btn1.id='idCandidate' + lngB1;
+    btn1.innerText="Candidate " + lngB1
+    document.getElementById('idParticipants').appendChild(btn1);
+  }
+}
+
+function loadCandidates() {
   let strName = '';
   let lng1 = 0;
   let lng2 = 0;
@@ -281,6 +296,13 @@ function removeLastWinner() {
     div1.removeChild(div1.lastChild);
 
     lngWinner = lngWinner+1;
+    if (lngWinner === 1) {
+      document.getElementById("idParticipants").innerText =" ";
+      canvas.style.zIndex = "-1";
+      document.getElementById("idImgStart").src="StartDraw.jpg";
+      blnFinished = false;
+      addCandidates();
+    }
   }
 }
 
