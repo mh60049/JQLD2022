@@ -23,7 +23,7 @@ let lngTotalWinner = lngWinner;
 let lngExistingWinner = 0;
 const lngMaxCandidates = 15;
 
-addCandidates();
+addCandidates();  //Add the 15 candidate buttons to the screen
 getData();
 
 async function getData() {
@@ -51,6 +51,7 @@ async function getData() {
       let strUserName = window.localStorage.getItem(strKey);
       strWinner=strKey + '. ' + strUserName  //Text to be displayed on winner buttons
       arrWinners.push(strWinner);  //Add the winner to the array arrWinners
+      arrWinnerName.push(strUserName);
 
       let btnWinner = document.createElement("button");
       btnWinner.innerHTML=strWinner;
