@@ -90,7 +90,7 @@ function changeStyle(){
     if (myID0 > 0) {
       let element0=document.getElementById('idCandidate' + myID0);
       element0.style.backgroundColor = "lightblue";
-      element0.style.color = "rgb(0,0,0,1)";
+      element0.style.color = "rgba(0,0,0,1)";
     }
 
     myID = Math.floor(Math.random() * lngMaxCandidates) + 1;
@@ -98,7 +98,7 @@ function changeStyle(){
     let element = document.getElementById('idCandidate' + myID);
     console.log(element);
     element.style.backgroundColor = "green";
-    element.style.color = "white";
+    element.style.color = "rgba(255,255,255,1)";
 
     myID0 = myID;
     document.getElementById('idPicked').textContent=element.textContent
