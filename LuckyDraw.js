@@ -58,13 +58,21 @@ async function getData() {
       btnWinner.style.fontSize = "18px";
       btnWinner.style.fontWeight = "bold";
 
-      if (lng1 <= lngMaxCandidates) {
-        btnWinner.style.backgroundColor = "rgb(255,182,0)";
+
+      if (lng1 <= 5) {
+        btnWinner.style.backgroundColor = "rgb(255,216,91)";
         btnWinner.style.color = "black";
-      } else {
-        btnWinner.style.backgroundColor = "rgb(190,58,40)";
+      } else if (lng1 <= 10) {
+        btnWinner.style.backgroundColor = "rgb(246,134,198)";
+        btnWinner.style.color = "black";
+      } else if (lng1 <= 20) {
+        btnWinner.style.backgroundColor = "rgb(248,163,133)";
+        btnWinner.style.color = "black";
+      } else if (lng1 <= 30) {
+        btnWinner.style.backgroundColor = "rgb(139,43,8)";
         btnWinner.style.color = "white";
       }
+
 
       btnWinner.style.borderColor = "orange";
 
@@ -238,7 +246,12 @@ function addCandidates() {
     let btn1 = document.createElement('button');
     btn1.className = "clsCandidate";
     btn1.id='idCandidate' + lngB1;
-    btn1.innerText="Candidate " + lngB1
+    btn1.style.backgroundImage = "url(Dice.JPG)"
+    btn1.style.backgroundSize = "100% 100%";
+    btn1.style.color = "rgba(0, 0, 0, 0)"
+    btn1.innerText="Can";
+    btn1.style.paddingTop="20px";
+    btn1.style.paddingBottom="20px";
     document.getElementById('idParticipants').appendChild(btn1);
   }
 }
@@ -264,7 +277,13 @@ function loadCandidates() {
 
       str2 = 'idCandidate' + (lng2 + 1).toString();
       console.log(str2);
-      document.getElementById(str2).textContent = str1;
+
+      let btn1 = document.getElementById(str2)
+      btn1.style.backgroundImage = null;
+      btn1.textContent = str1;
+      btn1.style.color="black";
+      btn1.style.paddingTop="5px";
+      btn1.style.paddingBottom="5px";
 
       ++lng2;
     }
