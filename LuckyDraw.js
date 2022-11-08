@@ -282,7 +282,7 @@ function loadCandidates() {
       let btn1 = document.getElementById(str2)
       btn1.style.backgroundImage = null;
       btn1.textContent = str1;
-      btn1.style.color="black";
+      btn1.style.color="rgba(0, 0, 0, 1)";
       btn1.style.paddingTop="5px";
       btn1.style.paddingBottom="5px";
 
