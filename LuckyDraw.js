@@ -90,7 +90,7 @@ function changeStyle(){
     if (myID0 > 0) {
       let element0=document.getElementById('idCandidate' + myID0);
       element0.style.backgroundColor = "lightblue";
-      element0.style.color = "rgb(100,100,100)";
+      element0.style.color = "rgb(0,0,0,1)";
     }
 
     myID = Math.floor(Math.random() * lngMaxCandidates) + 1;
